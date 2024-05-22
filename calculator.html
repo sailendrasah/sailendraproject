@@ -8,21 +8,25 @@
 <style>
     .container{
         width: 100%;
-        background-color: black;
+        background-color: white;
         height: 100vh;
         /* text-align: center; */
         justify-content: center;
         display: flex;
         align-items: center;
+        /* border: 1px solid black; */
 
 }
 .calculator{
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
+    background-color: rgb(241, 229, 229);
+    padding: 10px;
+    /* border-radius: 10px; */
+        border: 5px solid black;
+
 }
+
 .calculator form input{
-    border: 0;
+    border:0;
     outline: 0;
     width: 60px;
     height: 60px;
@@ -30,6 +34,8 @@
     box-shadow: -8px -8px 15px rgb(255, 255, 255,0.1);
     background: transparent;
     font-size: 20px;
+   
+   /* margin-top: 80px; */
 }
 form input.btn{
     width: 145px;
@@ -42,9 +48,11 @@ form input.btn{
                 <div class="display">
                     <input type="text" name="display">
                 </div>
-                <div>
+                <div >
                 <input type="button" value="AC"  onclick="display.value=' '">
                 <input type="button" value="()" onclick="display.value+='()'">
+                <input type="button" value="DE" onclick="display.value = display.value.toString().slice(0,-1)">
+
                 <input type="button" value="%" onclick="display.value+='%'">
                 <input type="button" value="/" onclick="display.value+='/'" >
 

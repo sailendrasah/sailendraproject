@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .game{
+    /* font-size: 40px; */
+    width: 60vmin;
+    height: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin:40px auto;
+    
+        
+    }
+    #btn{
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 20px;
+        padding: 10px;
+    }
+    .box{
+        height: 18vmin;
+        width: 18vmin;
+        border: none;
+        background-color: black;
+        color: white;
+        font-size: 100px;
+        text-align: center;
+    }
+    .msgcontainer{
+        text-align: center;
+        font-size: 50px;
+        justify-content: center;
+        margin: auto;
+    }
+    .hide{
+        display: none;
+    }
+    #reset-btn{
+        font-size: 50px;
+    }
+    #new-btn{
+        font-size: 50px;
+    }
+</style>
+<body>
+    <div class="msgcontainer hide">
+        <p id="msg">congurulation! winner</p>
+        <button id="new-btn">New game</button>
+    </div>
+    <div class="game">
+  <button class="box"></button>
+  <button class="box"></button>
+  <button class="box"></button>
+  <button class="box"></button>
+  <button class="box"></button>
+  <button class="box"></button>
+  <button class="box"></button>
+  <button class="box"></button>
+  <button class="box"></button>
+    <button id="reset-btn">Reset</button>
+
+    </div>
+    <script>
+        let boxes=document.querySelectorAll(".box");
+        let btn1=document.querySelector("#box");
+        let msgContainer=document.querySelector(".msgcontainer");
+        let msg=document.querySelector("#msg"); 
+        let resetBtn=document.querySelector("#reset-btn") ;
+        let newBtn=document.querySelector("#new-btn") ;
+
+        // for(let box of boxes){
+                // box.disabled=true;
+        
+        let turno=true;
+        const winpattern=[
+            [0,1,2],
+            [0,3,6],
+            [0,4,8],
+            [1,4,7],
+            [2,5,8],
+            [2,4,6],
+            [3,4,5],
+            [6,7,8]
+        ];
+        // const disableBoxes=()=>{
+        //     for(let box of boxes){
+        //         box.disabled=true;
+        //     }
+        // }
+        // const showWinner=(winner)=>{
+        //     msg.innerText='congratulation winner ${winner}';
+        //     msgContainer.classList.remove("hide");
+        //     disableBoxes();
+        // };
+          const Reset =() =>{
+            turno=true;
+            enableBoxes();
+            msgContainer.classList.add("hide");
+    resetBtn.style.background='red';
+
+        }
+        
+        boxes.forEach((box) =>{
+            box.addEventListener("click",() =>{
+         if(turno){
+            box.innerText='o';
+            turno=false;
+         }
+   else{
+            box.innerText='x';
+            turno=true;
+
+   }
+
+ box.disabled='true';
+    checkwinner();
+
+            });
+        });
+          const disableBoxes=()=>{
+            for(let box of boxes){
+    
+     box.disabled=true;
+            }
+        }; 
+           const enableBoxes=()=>{
+            for(let box of boxes){
+                box.disabled=false;
+                box.innerText="";
+            }
+        };
+        const showWinner= (winner)=> {
+            msg.innerText='congratulation! winner ';
+            msgContainer.classList.remove("hide");
+            disableBoxes();
+        };
+        const checkwinner =() =>{
+            for(let pattern of winpattern){
+                let pos1=boxes[pattern[0]].innerText;
+                let pos2=boxes[pattern[1]].innerText;
+                let pos3=boxes[pattern[2]].innerText;
+   if(pos1!="" &&pos2!="" &&pos3!=""){
+    if(pos1==pos2&&pos2==pos3){
+        console.log("winner",pos1);
+        showWinner(pos1);
+    }
+   }
+            }
+        
+      
+        };
+    resetBtn.addEventListener("click",Reset);
+    newBtn.addEventListener("click",Reset);
+    
+    
+    </script>
+</body>
+</html>

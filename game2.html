@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock scissors paper</title>
+</head>
+<style>
+#scissors{
+    height: 150px;
+    width: 200px;
+}
+#rock{
+     height: 150px;
+    width: 200px;
+}
+#paper{
+     height: 150px;
+    width: 200px;
+
+}
+.choices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+}
+.score-board{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+.msgcontainer{
+    text-align: center;
+    border: 1px solid black;
+justify-content: center;
+align-items: center;
+background-color: black;
+width: 40vmin;
+color: white;
+margin: auto;
+border-radius: 50px;
+}
+
+</style>
+<body>
+<div class="choices">
+    <div class="choice" id="scissor">
+        <img src="rock-paper-scissors-296853_1280.png" alt="" id="scissors">
+    </div>
+    <div class="choice" id="rock">
+        <img src="rock-paper-scissors-296854_640.png" alt="" id="rock">
+    </div>
+    <div class="choice" id="paper">
+        <img src="1000_F_243068964_BqrpjOdMd2U7ZEGLjiO8l7h4Ut1j9hcA.jpg" alt="" id="paper">
+    </div>
+</div> 
+<div class="score-board">
+    <div>
+        <h1 id="userscore">0</h1>
+        <p>you</p>
+    </div>
+    <div>
+        <h1 id="compscore">0</h1>
+        <p>computer</p>
+    </div>
+</div>   
+<div class="msgcontainer">
+    <p id="msg">Play game</p>
+</div>
+<script>
+    let userScore=0;
+    let compScore=0;
+    const choices=document.querySelectorAll(".choice");
+    const msg=document.querySelector("#msg");
+    const userScorepara=document.querySelector("#userscore");
+    const compScorepara=document.querySelector("#compscore");
+
+
+
+
+    const genComp=()=>{
+        const option=["paper","scissors","rock"];
+        const random=Math.floor(Math.random()*3);
+        return option[random];
+    }
+    const drawGame=()=>{
+        console.log("game was draw");
+        msg.innerText="draw game.play game";
+    }
+    const showWinner=(userWin)=>{
+if(userWin){
+    console.log("you win");
+
+      userScore++;
+      userScorepara.innerText=userScore;
+
+    // console.log("you win");
+    msg.innerText="you win";
+    // msg.style.background="green";
+}
+else{
+    console.log("you lose");
+     compScore++;
+     compScorepara.innerText=compScore;
+    msg.innerText="you lose";
+
+}
+    }
+        const playGame = (userChoice)=>{
+        console.log("user choice=",userChoice);
+        const compChoice=genComp();
+        console.log("comp choice=",compChoice);
+        if(userChoice==compChoice){
+   drawGame();
+        }else{
+            let userWin=0;
+        }
+        if(userChoice=="rock"){
+      userWin=compChoice=="paper"? false :true;
+        } 
+        else if(userChoice=="paper"){
+            userWin=compChoice=="scissors"? false:true;
+        }
+        else{
+            userWin=compChoice=="rock"? false: true;
+        }
+        showWinner(userWin);
+
+    };
+    choices.forEach((choice) =>{
+        choice.addEventListener("click",()=>{
+            const userChoice=choice.getAttribute("id");
+              playGame(userChoice);
+        });
+    });
+
+</script>
+</body>
+</html>

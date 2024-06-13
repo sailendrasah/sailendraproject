@@ -21,7 +21,8 @@
 
     }
     input{
-          font-size: 30px;
+          font-size: 21px;
+          
     padding: 17px;
     margin: auto;
     
@@ -35,7 +36,7 @@
     justify-content: center;
 }
 .mm{
-    font-size: 39px;
+    font-size: 24px;
 }
 .mn{
     font-size: 52px;
@@ -52,7 +53,7 @@
     </div>
 
     <div class="container">
-        <input type="text"  id="celcus" placeholder="enter tempreature in celsius">
+        <input type="text"  id="celcus" placeholder="Enter tempreature in celsius">
         <button class="box" id="btn" onclick="celcus()">convert</button>
         <button class="box" id="btn2">Reset</button>
         <h1 id="result"></h1>
@@ -68,7 +69,7 @@
             function celcus(){
         let celcus=document.getElementById('celcus').value;
         // let btn2=document.getElementById('btn2');
-     let result=(celcus-32)/1.8;
+     let result=(celcus*9/5)+32;
     //    document.getElementById("result").innerText= numberis=result;
     // console.log(result);
     document.getElementById('result').innerText=result;

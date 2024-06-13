@@ -13,7 +13,7 @@
       width: 900px;
         align-items: center;
         margin:  auto;
-        font-size: 150px;
+        font-size: 50px;
         margin-top: -21px;
     }
     input{
@@ -23,11 +23,12 @@
     #btn{
         font-size: 100px;
         border: 1px solid black;
+        margin: 13px;
         background-color: aqua;
-        border-radius: 33px;
-
-
+        border-radius: 33px
+    
     }
+
 #number{
     font-size: 50px;
 }
@@ -35,10 +36,10 @@
     text-align: center;
 }
 .mm{
-    font-size: 32px;
+    font-size: 39px;
 }
 .mn{
-    font-size: 42px;
+    font-size: 52px;
 }
 </style>
 <body>
@@ -50,19 +51,29 @@
     <div class="container">
         <input type="text" id="number" placeholder="enter a number">
         <button class="box" id="btn" onclick="celcus()">convert</button>
+        <button class="box" id="btn2">Reset</button>
         <h1 id="result"></h1>
     </div>
     <script>
-        // function celcus(){
-          btn.addEventListener("click",() =>{
+    
+          btn2.addEventListener("click",() =>{
+            btn.style.background='aqua'
+            document.getElementById('result').innerText="";
+            document.getElementById('number').value="";
+
+          })
+            function celcus(){
         let number=document.getElementById('number').value;
+        // let btn2=document.getElementById('btn2');
      let result=(number*9/5)+32;
     //    document.getElementById("result").innerText= numberis=result;
-    console.log(result);
-    btn.innerText=result;
+    // console.log(result);
+    document.getElementById('result').innerText=result;
 btn.style.background='red';
 
-        })
+            }
+
+        
     </script>
 </body>
 </html>

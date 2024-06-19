@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .boxes{
+        font-size: 50px;
+        justify-content: center;
+        width: 400px;
+        height: 400px;
+        text-align: center;
+        align-items: center;
+        margin: auto;
+    }
+    input{
+        font-size: 18px;
+    }
+    .heading{
+        text-align: center;
+        font-size: 16px;
+    }
+    #btn{
+        font-size: 35px;
+        background-color: rgb(228, 215, 199);
+        border: 1px solid black;
+    }
+    #btn2{
+        font-size: 20px;
+    }
+</style>
+<body>
+    <div class="heading">
+        <h1>Simple interest calculating App</h1>
+        <p>simple interest is an interest charge that borrowers pay lenders for loan.<br>It is calculatingusing the principalonly<br>and does not include compounding imterest</p>
+    </div>
+    <div class="boxes">
+        <input id="principal" placeholder="Enter your amount">
+        <input id="time" placeholder="Enter time">
+        <input id="rate" placeholder="Enter interest rate">
+        <button id="btn" onclick="calculate()">calculate it</button>
+        <button id="btn2">Reset</button>
+
+        <h2 id="result"></h2>
+
+
+    </div>
+    <script>
+          btn2.addEventListener("click",() =>{
+let principal=document.getElementById('principal').value='';
+let time=document.getElementById('time').value='';
+let rate=document.getElementById('rate').value='';
+let result=document.getElementById('result').innerText='';
+btn.style.backgroundColor=' rgb(228, 215, 199)'
+
+ 
+          })
+        function calculate(){
+let principal=document.getElementById('principal').value;
+let time=document.getElementById('time').value;
+let rate=document.getElementById('rate').value;
+let result=(principal*time*rate)/100;
+document.getElementById('result').innerText=result;
+btn.style.backgroundColor='green';
+        }
+    </script>
+</body>
+</html>
